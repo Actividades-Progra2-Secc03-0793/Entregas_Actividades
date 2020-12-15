@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GeoMediaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblArchivos">
+          <Key>
+            <PropertyRef Name="idArchivo" />
+          </Key>
+          <Property Name="idArchivo" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="idTipoFile" Type="int" />
+          <Property Name="formato" Type="varchar" MaxLength="10" />
+          <Property Name="precio" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="ruta" Type="nvarchar" MaxLength="1000" />
+          <Property Name="detalles" Type="nvarchar" MaxLength="500" />
+          <Property Name="sinopsis" Type="nvarchar" MaxLength="1500" />
+          <Property Name="codCategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCategorias">
+          <Key>
+            <PropertyRef Name="codCategoria" />
+          </Key>
+          <Property Name="codCategoria" Type="int" Nullable="false" />
+          <Property Name="categoria" Type="nchar" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="tblRegistroAlquiler">
+          <Key>
+            <PropertyRef Name="codAlquiler" />
+          </Key>
+          <Property Name="codAlquiler" Type="int" Nullable="false" />
+          <Property Name="fecha_alquiler" Type="date" />
+          <Property Name="subTotal" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="costoTotal" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="idArchivo" Type="int" />
+          <Property Name="idUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRoles">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="nomRol" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblTiposFile">
+          <Key>
+            <PropertyRef Name="idTipoFile" />
+          </Key>
+          <Property Name="idTipoFile" Type="int" Nullable="false" />
+          <Property Name="nomTipoFile" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUsuarios">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="nomUsuario" Type="nvarchar" MaxLength="30" />
+          <Property Name="pass" Type="nvarchar" MaxLength="30" />
+          <Property Name="idRol" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="char" MaxLength="9" />
+        </EntityType>
+        <Association Name="fk_codCategoria">
+          <End Role="tblCategorias" Type="Self.tblCategorias" Multiplicity="0..1" />
+          <End Role="tblArchivos" Type="Self.tblArchivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorias">
+              <PropertyRef Name="codCategoria" />
+            </Principal>
+            <Dependent Role="tblArchivos">
+              <PropertyRef Name="codCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idArchivo1">
+          <End Role="tblArchivos" Type="Self.tblArchivos" Multiplicity="0..1" />
+          <End Role="tblRegistroAlquiler" Type="Self.tblRegistroAlquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArchivos">
+              <PropertyRef Name="idArchivo" />
+            </Principal>
+            <Dependent Role="tblRegistroAlquiler">
+              <PropertyRef Name="idArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idRol">
+          <End Role="tblRoles" Type="Self.tblRoles" Multiplicity="0..1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRoles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idTipoFile">
+          <End Role="tblTiposFile" Type="Self.tblTiposFile" Multiplicity="0..1" />
+          <End Role="tblArchivos" Type="Self.tblArchivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTiposFile">
+              <PropertyRef Name="idTipoFile" />
+            </Principal>
+            <Dependent Role="tblArchivos">
+              <PropertyRef Name="idTipoFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idUsuario1">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="0..1" />
+          <End Role="tblRegistroAlquiler" Type="Self.tblRegistroAlquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tblRegistroAlquiler">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GeoMediaBDModelStoreContainer">
+          <EntitySet Name="tblArchivos" EntityType="Self.tblArchivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategorias" EntityType="Self.tblCategorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegistroAlquiler" EntityType="Self.tblRegistroAlquiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTiposFile" EntityType="Self.tblTiposFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_codCategoria" Association="Self.fk_codCategoria">
+            <End Role="tblCategorias" EntitySet="tblCategorias" />
+            <End Role="tblArchivos" EntitySet="tblArchivos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idArchivo1" Association="Self.fk_idArchivo1">
+            <End Role="tblArchivos" EntitySet="tblArchivos" />
+            <End Role="tblRegistroAlquiler" EntitySet="tblRegistroAlquiler" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idRol" Association="Self.fk_idRol">
+            <End Role="tblRoles" EntitySet="tblRoles" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idTipoFile" Association="Self.fk_idTipoFile">
+            <End Role="tblTiposFile" EntitySet="tblTiposFile" />
+            <End Role="tblArchivos" EntitySet="tblArchivos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idUsuario1" Association="Self.fk_idUsuario1">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblRegistroAlquiler" EntitySet="tblRegistroAlquiler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GeoMediaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblArchivo">
+          <Key>
+            <PropertyRef Name="idArchivo" />
+          </Key>
+          <Property Name="idArchivo" Type="Int32" Nullable="false" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idTipoFile" Type="Int32" />
+          <Property Name="formato" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="ruta" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="sinopsis" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="codCategoria" Type="Int32" />
+          <NavigationProperty Name="tblCategoria" Relationship="Self.fk_codCategoria" FromRole="tblArchivos" ToRole="tblCategorias" />
+          <NavigationProperty Name="tblRegistroAlquilers" Relationship="Self.fk_idArchivo1" FromRole="tblArchivos" ToRole="tblRegistroAlquiler" />
+          <NavigationProperty Name="tblTiposFile" Relationship="Self.fk_idTipoFile" FromRole="tblArchivos" ToRole="tblTiposFile" />
+        </EntityType>
+        <EntityType Name="tblCategoria">
+          <Key>
+            <PropertyRef Name="codCategoria" />
+          </Key>
+          <Property Name="codCategoria" Type="Int32" Nullable="false" />
+          <Property Name="categoria" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tblArchivos" Relationship="Self.fk_codCategoria" FromRole="tblCategorias" ToRole="tblArchivos" />
+        </EntityType>
+        <EntityType Name="tblRegistroAlquiler">
+          <Key>
+            <PropertyRef Name="codAlquiler" />
+          </Key>
+          <Property Name="codAlquiler" Type="Int32" Nullable="false" />
+          <Property Name="fecha_alquiler" Type="DateTime" Precision="0" />
+          <Property Name="subTotal" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="costoTotal" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="idArchivo" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="tblArchivo" Relationship="Self.fk_idArchivo1" FromRole="tblRegistroAlquiler" ToRole="tblArchivos" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.fk_idUsuario1" FromRole="tblRegistroAlquiler" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="nomRol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblUsuarios" Relationship="Self.fk_idRol" FromRole="tblRoles" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblTiposFile">
+          <Key>
+            <PropertyRef Name="idTipoFile" />
+          </Key>
+          <Property Name="idTipoFile" Type="Int32" Nullable="false" />
+          <Property Name="nomTipoFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblArchivos" Relationship="Self.fk_idTipoFile" FromRole="tblTiposFile" ToRole="tblArchivos" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="nomUsuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="idRol" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblRegistroAlquilers" Relationship="Self.fk_idUsuario1" FromRole="tblUsuarios" ToRole="tblRegistroAlquiler" />
+          <NavigationProperty Name="tblRole" Relationship="Self.fk_idRol" FromRole="tblUsuarios" ToRole="tblRoles" />
+        </EntityType>
+        <Association Name="fk_codCategoria">
+          <End Role="tblCategorias" Type="Self.tblCategoria" Multiplicity="0..1" />
+          <End Role="tblArchivos" Type="Self.tblArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorias">
+              <PropertyRef Name="codCategoria" />
+            </Principal>
+            <Dependent Role="tblArchivos">
+              <PropertyRef Name="codCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idArchivo1">
+          <End Role="tblArchivos" Type="Self.tblArchivo" Multiplicity="0..1" />
+          <End Role="tblRegistroAlquiler" Type="Self.tblRegistroAlquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArchivos">
+              <PropertyRef Name="idArchivo" />
+            </Principal>
+            <Dependent Role="tblRegistroAlquiler">
+              <PropertyRef Name="idArchivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idTipoFile">
+          <End Role="tblTiposFile" Type="Self.tblTiposFile" Multiplicity="0..1" />
+          <End Role="tblArchivos" Type="Self.tblArchivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTiposFile">
+              <PropertyRef Name="idTipoFile" />
+            </Principal>
+            <Dependent Role="tblArchivos">
+              <PropertyRef Name="idTipoFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idUsuario1">
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="0..1" />
+          <End Role="tblRegistroAlquiler" Type="Self.tblRegistroAlquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tblRegistroAlquiler">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idRol">
+          <End Role="tblRoles" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRoles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GeoMediaBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblArchivos" EntityType="Self.tblArchivo" />
+          <EntitySet Name="tblCategorias" EntityType="Self.tblCategoria" />
+          <EntitySet Name="tblRegistroAlquilers" EntityType="Self.tblRegistroAlquiler" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblTiposFiles" EntityType="Self.tblTiposFile" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuario" />
+          <AssociationSet Name="fk_codCategoria" Association="Self.fk_codCategoria">
+            <End Role="tblCategorias" EntitySet="tblCategorias" />
+            <End Role="tblArchivos" EntitySet="tblArchivos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idArchivo1" Association="Self.fk_idArchivo1">
+            <End Role="tblArchivos" EntitySet="tblArchivos" />
+            <End Role="tblRegistroAlquiler" EntitySet="tblRegistroAlquilers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idTipoFile" Association="Self.fk_idTipoFile">
+            <End Role="tblTiposFile" EntitySet="tblTiposFiles" />
+            <End Role="tblArchivos" EntitySet="tblArchivos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idUsuario1" Association="Self.fk_idUsuario1">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblRegistroAlquiler" EntitySet="tblRegistroAlquilers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idRol" Association="Self.fk_idRol">
+            <End Role="tblRoles" EntitySet="tblRoles" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GeoMediaBDModelStoreContainer" CdmEntityContainer="GeoMediaBDEntities">
+          <EntitySetMapping Name="tblArchivos">
+            <EntityTypeMapping TypeName="GeoMediaBDModel.tblArchivo">
+              <MappingFragment StoreEntitySet="tblArchivos">
+                <ScalarProperty Name="idArchivo" ColumnName="idArchivo" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="idTipoFile" ColumnName="idTipoFile" />
+                <ScalarProperty Name="formato" ColumnName="formato" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="sinopsis" ColumnName="sinopsis" />
+                <ScalarProperty Name="codCategoria" ColumnName="codCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategorias">
+            <EntityTypeMapping TypeName="GeoMediaBDModel.tblCategoria">
+              <MappingFragment StoreEntitySet="tblCategorias">
+                <ScalarProperty Name="codCategoria" ColumnName="codCategoria" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegistroAlquilers">
+            <EntityTypeMapping TypeName="GeoMediaBDModel.tblRegistroAlquiler">
+              <MappingFragment StoreEntitySet="tblRegistroAlquiler">
+                <ScalarProperty Name="codAlquiler" ColumnName="codAlquiler" />
+                <ScalarProperty Name="fecha_alquiler" ColumnName="fecha_alquiler" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="costoTotal" ColumnName="costoTotal" />
+                <ScalarProperty Name="idArchivo" ColumnName="idArchivo" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="GeoMediaBDModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRoles">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nomRol" ColumnName="nomRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTiposFiles">
+            <EntityTypeMapping TypeName="GeoMediaBDModel.tblTiposFile">
+              <MappingFragment StoreEntitySet="tblTiposFile">
+                <ScalarProperty Name="idTipoFile" ColumnName="idTipoFile" />
+                <ScalarProperty Name="nomTipoFile" ColumnName="nomTipoFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="GeoMediaBDModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuarios">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nomUsuario" ColumnName="nomUsuario" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18d1a71b154e44d5abae67f6105069c2" Name="Diagram1">
+        <EntityTypeShape EntityType="GeoMediaBDModel.tblArchivo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GeoMediaBDModel.tblCategoria" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GeoMediaBDModel.tblRegistroAlquiler" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GeoMediaBDModel.tblRole" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GeoMediaBDModel.tblTiposFile" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GeoMediaBDModel.tblUsuario" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="GeoMediaBDModel.fk_codCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="GeoMediaBDModel.fk_idArchivo1" ManuallyRouted="false" />
+        <AssociationConnector Association="GeoMediaBDModel.fk_idTipoFile" ManuallyRouted="false" />
+        <AssociationConnector Association="GeoMediaBDModel.fk_idUsuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="GeoMediaBDModel.fk_idRol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
