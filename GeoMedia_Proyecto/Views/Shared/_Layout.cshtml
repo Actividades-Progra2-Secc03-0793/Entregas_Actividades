@@ -1,0 +1,98 @@
+﻿@{ 
+    var session = 1;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - GeoMedia</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/index.css" rel="stylesheet" />
+</head>
+<body style="background-color: white;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div style="margin: 0.25em;"><a href="~/GeoHome/Index"><img src="~/img/geom-logo.png" alt="Logo.png" /></a></div> 
+                
+            </div>
+            @if (session == 1)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "GeoHome")</li>
+                        <li>@Html.ActionLink("Acerca de", "About", "GeoHome")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "GeoHome")</li>
+                        <li>@Html.ActionLink("Ayuda", "Help", "GeoHome")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "tblUsuarios")</li>
+                        <li>@Html.ActionLink("Roles", "Index", "tblRoles")</li>
+                        <li>@Html.ActionLink("Productos", "Index", "tblArchivoes")</li>
+                        <li>@Html.ActionLink("Categorias", "Index", "tblCategorias")</li>
+                        <li>@Html.ActionLink("Alquileres realizados", "Index", "tblRegistroAlquilers")</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="~/GeoHome/CerrarLogin" class="btn_registro"><span>Cerrar sesión</span></a>
+
+                </div>
+            }
+            else if (session == 2)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "GeoHome")</li>
+                        <li>@Html.ActionLink("Acerca de", "About", "GeoHome")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "GeoHome")</li>
+                        <li>@Html.ActionLink("Ayuda", "Help", "GeoHome")</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="~/GeoHome/CerrarLogin" class="btn_registro"><span>Cerrar sesión</span></a>
+
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "GeoHome")</li>
+                        <li>@Html.ActionLink("Acerca de", "About", "GeoHome")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "GeoHome")</li>
+                        <li>@Html.ActionLink("Ayuda", "Help", "GeoHome")</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="~/GeoHome/Login" class="btn_registro"><span>Iniciar sesión</span></a>
+
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        <div class="menu prt-hidden">
+            <ul>
+                <li><a href="~/GeoHome/Index" class="home"><img src="~/img/inicio.png" width="50" height="50" /> Inicio</a></li>
+                <li><a href="~/Catalogo/Peliculas" class="video"><img src="~/img/peliculas.png" width="50" height="50" /> Peliculas</a></li>
+                <li><a href="~/Catalogo/Series" class="tv"><img src="~/img/Series.png" width="50" height="50" /> Series</a></li>
+                <li><a href="~/Catalogo/Videos" class="film"><img src="~/img/videos.png" width="50" height="50" /> Videos</a></li>
+                <li><a href="~/Catalogo/Musica" class="headphones"><img src="~/img/Musica.png" width="50" height="50" /> M&uacute;sica</a></li>
+            </ul>
+
+        </div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

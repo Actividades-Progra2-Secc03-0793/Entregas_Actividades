@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GeoMedia_Proyecto.Models.tblCategoria>
+
+@{
+    ViewBag.Title = "Lista Categoria";
+    var total = 0;
+}
+
+<div class="prt-body">
+    <center>
+    <h2>Lista de categorias</h2>
+    </center>
+    <p>
+        <input type="button" value="Agregar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/tblCategorias/Create")'" />
+    </p>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.codCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria)
+            </th>
+            <th>Opciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            total++;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoria)
+                </td>
+                <td>
+                    <input type="button" value="Editar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblCategorias/Edit/" + item.codCategoria)'" />
+                    <input type="button" value="Ver" class="btn btn-info" onclick="document.location.href='@Url.Content("~/tblCategorias/Details/" + item.codCategoria)'" />
+                    <input type="button" value="Borrar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/tblCategorias/Delete/"+ item.codCategoria)'" />
+                </td>
+            </tr>
+        }
+        <tr><td colspan="7" align="right">Total recuperado: @total &nbsp;&nbsp;</td><td></td></tr>
+        <tr><td colspan="8"><hr /></td></tr>
+    </table>
+</div>

@@ -1,0 +1,203 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Inicio de sesión - GeoMedia</title>
+    <style type="text/css">
+        body
+        {
+            background-image: url('../img/background.png');
+            background-size: cover;
+        }
+        h1
+        {
+            color: white;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            text-align: center;
+        }
+        .auto-style1 {
+            width: 170px;
+        }
+        .frmLogin
+        {
+            width: 85%;
+            height: 500px;
+            margin-top: 80px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 15px;
+        }
+        .banner-login
+        {
+            float: left;
+            width: 35%;
+            border-right: 2px solid #00ff82;
+        }
+        .banner-login img
+        {
+            background-size: 100% 100%;
+            width: 100%;
+            height: 500px;
+        }
+        .perfil
+        {
+            width: 100px;
+            height: 100px;
+            margin-left: 62%;
+            margin-right: 15%;
+        }
+        .perfil img
+        {
+            margin-top: -55px;
+            background-image:  radial-gradient(circle at top left, #fd00da, #19d7f8);
+            border-radius: 200px;
+            background-size: 100% 100%;
+        }
+        .login
+        {
+            width: 50%;
+            margin: auto;
+            padding: 2em;
+            margin-bottom: 50px;
+        }
+        .login label
+        {
+            color: cyan;
+            z-index: 20;
+            font-size: 16pt;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            padding-right: 0.5em;
+        }
+        .login input
+        {
+            color: white;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            font-size: 16pt;
+            background-color: rgba(0, 0, 0, 0);
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom: 2px solid #2b2b2b;
+            margin-bottom: 0.5em;
+
+        }
+        .login input:focus
+        {
+            border-bottom: 2px solid cyan;
+        }
+        .pie-login
+        {
+            width: 100%;
+            text-align: center;
+            margin-top: -55px;
+        }
+        .pie-login a
+        {
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';;
+            font-size: 10pt;
+            padding-bottom: 1em;
+        }
+        input.acceder
+        {
+            color: white;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            font-size: 16pt;
+            background-color: #171717;
+            cursor: pointer;
+            border: solid 2px #310079;
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+        }
+        label
+        {
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            color: white;
+        }
+        /*
+        media (max-width: 900px)
+        {
+            .banner-login
+            {
+                float: none;
+                width: 0;
+                display: none;
+            }
+            .banner-login img
+            {
+                width: 0px;
+                height: 0px;
+            }
+            .login
+            {
+                width: 95%;
+                margin: auto;
+                padding: 2em;
+                margin-bottom: 50px;
+            }
+            .perfil
+            {
+                width: 100px;
+                height: 100px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            body
+            {
+                background-size: auto;
+            }
+
+        }
+        */
+    </style>
+</head>
+<body>
+    <form class="frmLogin">
+        <div>
+            <div class="banner-login">
+                <img src="~/img/musi.jpg" alt="Banner-login" />
+            </div>
+            <div>
+                <div class="perfil">
+                    <img src="~/img/user.png" alt="Perfil-user" />
+                </div>
+                <h1>INICIO DE SESIÓN</h1>
+                <table width="55%" class="login" border="0">
+                    <tr>
+                        <td style="width: 100%;" align="middle">
+                            <label style="color: white; font-family:'Microsoft YaHei UI', 'Comic Sans MS';">Usuarios</label>><br />
+                            <input type="text" name="txtUsuarios" value="" placeholder="Nombre de su usuarios" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%;" align="middle">
+                            <label style="color: white; font-family:'Microsoft YaHei UI', 'Comic Sans MS';">Contraseña</label>><br />
+                            <input type="password" name="txtPass" value="" placeholder="ingrece su contraseña" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1" style="width: 25%" align="middle" height="75">
+                            <input type="submit" name="btnAcceder" value="Ingresar" class="acceder" /><br />
+                            <a href="~/GeoHome/Index" style="background-color:#171717; text-decoration: none; color: white; font-size: 16pt; border: solid 2px #310079; cursor: pointer;">Regresar a Inicio</a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="pie-login">
+                    <a href="#">¿Has olvidado tú usuario o contraseña?</a><br />
+                    <a href="~/GeoHome/Registro">Crear un nuevo usuario</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

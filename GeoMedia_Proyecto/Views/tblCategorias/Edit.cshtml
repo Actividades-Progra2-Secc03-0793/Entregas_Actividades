@@ -1,0 +1,36 @@
+﻿@model GeoMedia_Proyecto.Models.tblCategoria
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<center>
+    <h2>@ViewBag.Title categoria</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.codCategoria)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.categoria)
+                <div>
+                    @Html.EditorFor(model => model.categoria, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.categoria, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <input type="submit" value="Guardar cambios" class="btn btn-success" />
+                    <input type="button" value="Regresar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblCategorias/Index")'" />
+                </div>
+            </div>
+        </div>
+    }
+
+</center>

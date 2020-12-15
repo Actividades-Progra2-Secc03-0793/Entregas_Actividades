@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GeoMedia_Proyecto.Models.tblRole>
+
+@{
+    ViewBag.Title = "Roles";
+    var total = 0;
+} 
+<div class="prt-body">
+    <center>
+        <h2>Lista de @ViewBag.Title</h2>
+    </center>
+    <p>
+        <input type="button" value="Agregar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/tblRoles/Create")'" />
+    </p>
+    <center>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idRol)
+                </th>
+                <th>
+                    Nombre del Rol
+                </th>
+                <th>Opciones</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                total++;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idRol)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nomRol)
+                    </td>
+                    <td>
+                        <input type="button" value="Editar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblRoles/Edit/" + item.idRol)'" />
+                        <input type="button" value="Ver" class="btn btn-info" onclick="document.location.href='@Url.Content("~/tblRoles/Details/" + item.idRol)'" />
+                        <input type="button" value="Borrar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/tblRoles/Delete/"+ item.idRol)'" />
+                    </td>
+                </tr>
+
+            }
+            <tr><td colspan="7" align="right">Total recuperado: @total &nbsp;&nbsp;</td><td></td></tr>
+            <tr><td colspan="8"><hr /></td></tr>
+        </table>
+    </center>
+</div>

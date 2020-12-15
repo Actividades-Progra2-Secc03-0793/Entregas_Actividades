@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Soporte";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/index.css" rel="stylesheet" />
+    <style type="text/css">
+        .bg {
+            width: 100%;
+            background-image: url('../img/garden.jpg');
+            background-size: 100% 100%;
+            overflow-y: hidden;
+            position: fixed;
+            z-index: -1;
+        }
+
+        h1 {
+            color: black;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            text-align: center;
+            height: 75px;
+        }
+
+        .auto-style1 {
+            width: 170px;
+        }
+
+        .frmContacto {
+            width: 85%;
+            margin-top: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            border-radius: 15px;
+        }
+
+        .perfil {
+            width: 130px;
+            height: 130px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            .perfil img {
+                margin-top: 5px;
+                background-image: radial-gradient(circle at top left, #fd00da, #19d7f8);
+                border-radius: 200px;
+                background-size: 100% 100%;
+            }
+
+        .contact {
+            width: 40%;
+            margin: auto;
+            padding: 0.5em;
+            margin-bottom: 50px;
+        }
+
+        .contact label {
+                color: black;
+                z-index: 20;
+                font-size: 12pt;
+                font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+                padding-right: 0.5em;
+        }
+
+        input.acceder {
+            color: white;
+            width: 200px;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            font-size: 20pt;
+            background-color: #00108d;
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom: 3px solid #010838;
+            border-radius: 200px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <form id="form1">
+        <div>
+            <div class="bg">
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+            <div class="frmContacto">
+                <div>
+                    <div>
+                        <div class="perfil">
+                            <img src="~/img/user.png" alt="Perfil-user" />
+                        </div>
+                        <h1>¿Describa cual es su problema?</h1>
+                        <table width="95%" class="contact" border="0">
+                            <tr>
+                                <td class="auto-style1" style="width: 25%">
+                                    <label for="txtCorreo">Correo: </label>
+                                </td>
+                                <td><input type="text" name="txtCorreo" value=" " style="width: 70%" /></td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1" style="width: 25%">
+                                    <label for="txtPass">Problema: </label>
+                                </td>
+                                <td>
+                                    <select name="opcion">
+                                        <option value="opc1">Al cargar la página</option>
+                                        <option value="opc2">Al alquilar</option>
+                                        <option value="opc3">Al seleccionar</option>
+                                        <option value="opc4">De mi información</option>
+                                        <option value="opc5">Otros problemas</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1" style="width: 25%">
+                                    <label for="txtDesc">Descripción: </label>
+                                </td>
+                                <td>
+                                    <textarea rows="12" cols="30"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1" style="width: 25%" colspan="2" align="middle">
+                                    <br /> 
+                                    <input type="submit" name="btnAcceder" value="Enviar" class="acceder" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pie">
+                <div class="texto-pie">
+                    <h4>
+                        Derechos reservados | GeoMedia - @DateTime.Now.Year
+                    </h4>
+                    <p>
+                        Por problemas que se puedan presentar durante su experiencia,
+                        por favor <a href="~/GeoHome/Contact">contactenos</a> para solventar sus inquietudes lo más
+                        rapido posible. Por otra parte gracias por usar nuestro sitio.
+                    </p>
+                </div>
+                <div class="redes">
+                    <p>Puedes encontrarnos también en:</p>
+                    <ul>
+                        <li><a href="#" class="f-logo"><img src="~/img/f-logo.png" alt="facebook-logo" /></a></li>
+                        <li><a href="#" class="w-logo"><img src="~/img/w-logo.png" alt="whatsapp-logo" /></a></li>
+                        <li><a href="#" class="t-logo"><img src="~/img/t-logo.png" alt="twitter-logo" /></a></li>
+                        <li><a href="#" class="i-logo"><img src="~/img/i-logo.png" alt="instagram-logo" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

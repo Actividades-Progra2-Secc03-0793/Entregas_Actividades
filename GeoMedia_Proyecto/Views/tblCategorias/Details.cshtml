@@ -1,0 +1,28 @@
+﻿@model GeoMedia_Proyecto.Models.tblCategoria
+
+@{
+    ViewBag.Title = "Detailles";
+}
+
+
+<div style="width: 98%; margin: auto">
+    <h2>@ViewBag.Title de la categoria</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.categoria)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.categoria)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.codCategoria }, htmlAttributes: new { @class = "btn btn-primary" }) |
+        <input type="button" value="Regresar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblCategorias/Index")'" />
+    </p>
+</div>

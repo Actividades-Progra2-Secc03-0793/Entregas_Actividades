@@ -1,0 +1,89 @@
+﻿@model IEnumerable<GeoMedia_Proyecto.Models.tblArchivo>
+
+@{
+    ViewBag.Title = "Lista Productos";
+    var total = 0;
+}
+
+<div class="prt-header">
+    <img src="~/img/geom-logo.png" alt="geo-media" />
+</div>
+<div class="prt-body">
+    <center>
+        <h2>Lista de Productos Multimedia</h2>
+    </center>
+    <p>
+        <input type="button" value="Agregar" class="btn btn-primary prt-hidden" onclick="document.location.href='@Url.Content("~/tblArchivoes/Create")'" />
+        <input type="button" value="Generar Reporte" class="btn btn-primary prt-hidden" onclick="window.print()" />
+    </p>
+    <center>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idArchivo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.formato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.precio)
+                </th>
+                <th>
+                    Imagen
+                </th>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Tipo Archivo
+                </th>
+                <th class="prt-hidden">Opciones</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                total++;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idArchivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.formato)
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.precio)
+                    </td>
+                    <td>
+                        @if (item.ruta == null)
+                        {
+                            <img src = "../../img/Extras.png" alt="Imagen-Producto" width="75" height="100" style="background-color: #525252" />
+                        }
+                        else
+                        {
+                            <img src="@Html.DisplayFor(modelItem => item.ruta)" alt="Imagen-Producto" width="75" height="100" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tblCategoria.categoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tblTiposFile.nomTipoFile)
+                    </td>
+                    <td align="middle" class="prt-hidden">
+                        <input type="button" value="Editar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblArchivoes/Edit/"+item.idArchivo)'" />
+                        <input type="button" value="Ver" class="btn btn-info" onclick="document.location.href='@Url.Content("~/tblArchivoes/Details/"+item.idArchivo)'" />
+                        <input type="button" value="Borrar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/tblArchivoes/Delete/"+item.idArchivo)'" />
+                    </td>
+                </tr>
+            }
+            <tr><td colspan="7" align="right">Total recuperado: @total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td></td></tr>
+            <tr class="prt-hidden"><td colspan="8"><hr /></td></tr>
+        </table>
+    </center>
+</div>

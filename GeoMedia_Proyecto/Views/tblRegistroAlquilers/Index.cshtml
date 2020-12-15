@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GeoMedia_Proyecto.Models.tblRegistroAlquiler>
+
+@{
+    ViewBag.Title = "Lista Alquileres";
+    var total = 0;
+}
+
+<div class="prt-header">
+    <img src="~/img/geom-logo.png" alt="geo-media" />
+</div>
+<div class="prt-body">
+    <center>
+        <h2>Lista de alquileres realizados</h2>
+    </center>
+
+    <input type="button" value="Generar Reporte" class="btn btn-primary prt-hidden" onclick="window.print()" />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.codAlquiler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_alquiler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tblArchivo.titulo)
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th class="prt-hidden">Opciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+            {
+            total++;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codAlquiler)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_alquiler)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblArchivo.titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblUsuario.nomUsuario)
+                </td>
+                <td class="prt-hidden">
+                    <input type="button" value="Ver" class="btn btn-info" onclick="document.location.href='@Url.Content("~/tblRegistroAlquilers/Details/" + item.codAlquiler)'" />
+                </td>
+            </tr>
+        }
+        <tr><td colspan="6" align="right">Total recuperado: @total &nbsp;&nbsp;</td><td></td></tr>
+        <tr class="prt-hidden"><td colspan="7"><hr /></td></tr>
+    </table>
+</div>

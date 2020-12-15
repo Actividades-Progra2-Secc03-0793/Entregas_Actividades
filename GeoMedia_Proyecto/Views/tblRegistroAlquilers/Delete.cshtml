@@ -1,0 +1,64 @@
+﻿@model GeoMedia_Proyecto.Models.tblRegistroAlquiler
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblRegistroAlquiler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_alquiler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_alquiler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblArchivo.titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblArchivo.titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblUsuario.nomUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUsuario.nomUsuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

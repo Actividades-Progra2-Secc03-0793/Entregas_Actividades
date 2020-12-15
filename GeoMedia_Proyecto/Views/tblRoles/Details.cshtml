@@ -1,0 +1,26 @@
+﻿@model GeoMedia_Proyecto.Models.tblRole
+
+@{
+    ViewBag.Title = "Detailles";
+}
+<div style="width: 98%; margin: auto">
+    <h2>Detalles del Rol</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Rol
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nomRol)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idRol }, htmlAttributes: new { @class = "btn btn-primary" }) |
+        <input type="button" value="Regresar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblRoles/Index")'" />
+    </p>
+</div>

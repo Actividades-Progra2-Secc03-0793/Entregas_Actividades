@@ -1,0 +1,35 @@
+﻿@model GeoMedia_Proyecto.Models.tblCategoria
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+
+<div style="width: 98%; margin: auto">
+    <h2>@ViewBag.Titlecategoria</h2>
+
+    <h3>Esta seguro de eliminar el registro?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.categoria)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.categoria)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar" class="btn btn-danger" /> |
+                <input type="button" value="Regresar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblCategorias/Index")'" />
+            </div>
+        }
+    </div>
+</div>

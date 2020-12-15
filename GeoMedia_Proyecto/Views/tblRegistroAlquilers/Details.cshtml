@@ -1,0 +1,59 @@
+﻿@model GeoMedia_Proyecto.Models.tblRegistroAlquiler
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="width: 98%; margin: auto">
+    <h2>Details</h2>
+
+    <div>
+        <h4>tblRegistroAlquiler</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha_alquiler)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha_alquiler)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.subTotal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.subTotal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.costoTotal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.costoTotal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tblArchivo.titulo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblArchivo.titulo)
+            </dd>
+
+            <dt>
+                Cliente
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblUsuario.nomUsuario)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <input type="button" value="Regresar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblRegistroAlquilers/Index")'" />
+    </p>
+</div>

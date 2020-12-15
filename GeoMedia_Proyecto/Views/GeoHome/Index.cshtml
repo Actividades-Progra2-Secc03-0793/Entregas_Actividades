@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Página Principal - GeoMedia</title>
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="overflow-y: hidden;">
+    <form id="form1" style="overflow-y: hidden;">
+        <div>
+            <div class="contenedor" >
+            <!--
+                <div class="cabezera">
+                    <div class="menu_s">
+                        <ul>
+                            <li><div class="logo"><img src="~/img/logo.png" alt="Logo.png" /> GeoMedia<sup>SV</sup></div></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><a href="index.aspx">Inicio</a></li>
+                            <li><a href="#">Explorar</a></li>
+                            <li><a href="Contactenos.aspx">Contactenos</a></li>
+                            <li><a href="Acerca_De.aspx">Acerca de</a></li>
+                            <li><a href="Ayuda.aspx">Ayuda</a></li>
+                            <li><a href="frmLogin.aspx" class="btn_registro"><span>Iniciar sesión</span></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                -->
+                <div class="buscar">
+                    <input type="search" name="txtBuscar" placeholder="Que desea buscar?" />
+                </div>
+                <div class="banner">
+                    <div class="contenido">
+                        <div class="app-text">
+                            <h1>Bienvenido a GeoMedia</h1>
+                            <p>
+                                <b>GeoMedia</b> es un sitio web donde podras adquirir y disfrutar
+                                junto a tus seres queridos la <br />mejor experiencia audio-visual, inicia
+                                sessión para tener acceso del contenido que podemos <br />ofrecerte.
+                            </p>
+                            <br />
+                            <h2>Seleccione que desea buscar:</h2>
+                            <a href="~/Catalogo/Peliculas">
+                                <figure class="figuras peli">
+                                    <h3>Peliculas</h3>
+                                </figure>
+                            </a>
+                            <a href="~/Catalogo/Series">
+                                <figure class="figuras seri">
+                                    <h3>Series</h3>
+                                </figure>
+                            </a>
+                            <a href="~/Catalogo/Videos">
+                                <figure class="figuras vide">
+                                    <h3>Videos</h3>
+                                </figure>
+                            </a>
+                            <a href="~/Catalogo/Musica">
+                                <figure class="figuras musi">
+                                    <h3>Música</h3>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pie">
+                    <div class="texto-pie">
+                        <h4>
+                            Derechos reservados | GeoMedia - @DateTime.Now.Year
+                        </h4>
+                        <p>
+                            Por problemas que se puedan presentar durante su experiencia,
+                            por favor <a href="~/GeoHome/Contact">contactenos</a> para solventar sus inquietudes lo más
+                            rapido posible. Por otra parte gracias por usar nuestro sitio.
+                        </p>
+                    </div>
+                    <div class="redes">
+                        <p>Puedes encontrarnos también en:</p>
+                        <ul>
+                            <li><a href="#" class="f-logo"><img src="~/img/f-logo.png" alt="facebook-logo" /></a></li>
+                            <li><a href="#" class="w-logo"><img src="~/img/w-logo.png" alt="whatsapp-logo" /></a></li>
+                            <li><a href="#" class="t-logo"><img src="~/img/t-logo.png" alt="twitter-logo" /></a></li>
+                            <li><a href="#" class="i-logo"><img src="~/img/i-logo.png" alt="instagram-logo" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>
+
+

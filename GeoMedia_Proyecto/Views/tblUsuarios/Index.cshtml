@@ -1,0 +1,82 @@
+﻿@model IEnumerable<GeoMedia_Proyecto.Models.tblUsuario>
+
+@{
+    ViewBag.Title = "Lista Usuarios";
+    var total = 0;
+}
+<div class="prt-header">
+    <img src="~/img/geom-logo.png" alt="geo-media" />
+</div> 
+<div class="prt-body">
+    
+    <center>
+        <h2>Lista de Usuarios</h2>
+    </center>
+    <p>
+        <input type="button" value="Agregar" class="btn btn-primary prt-hidden" onclick="document.location.href='@Url.Content("~/tblUsuarios/Create")'" />
+        <input type="button" value="Generar Reporte" class="btn btn-primary prt-hidden" onclick="window.print()" />
+    </p>
+    <center>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idUsuario)
+                </th>
+                <th>
+                    Usuario
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    Rol
+                </th>
+                <th  class="prt-hidden">Opciones</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                total++;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nomUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tblRole.nomRol)
+                    </td>
+                    <td  class="prt-hidden">
+                        <input type="button" value="Editar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblUsuarios/Edit/"+item.idUsuario)'" />
+                        <input type="button" value="Ver" class="btn btn-info" onclick="document.location.href='@Url.Content("~/tblUsuarios/Details/"+item.idUsuario)'" />
+                        <input type="button" value="Borrar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/tblUsuarios/Delete/"+item.idUsuario)'" />
+                    </td>
+                </tr>
+            }
+            <tr><td colspan="6" align="right">Total recuperado: @total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td colspan="2"></td></tr>
+            <tr class="prt-hidden"><td colspan="8"><hr /></td></tr>
+        </table>
+    </center>
+</div>
