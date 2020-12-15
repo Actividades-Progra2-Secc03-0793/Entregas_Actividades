@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GeoMediaBDModelStoreContainer" CdmEntityContainer="GeoMediaBDEntities">
+    <EntitySetMapping Name="tblArchivos">
+      <EntityTypeMapping TypeName="GeoMediaBDModel.tblArchivo">
+        <MappingFragment StoreEntitySet="tblArchivos">
+          <ScalarProperty Name="idArchivo" ColumnName="idArchivo" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="idTipoFile" ColumnName="idTipoFile" />
+          <ScalarProperty Name="formato" ColumnName="formato" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="sinopsis" ColumnName="sinopsis" />
+          <ScalarProperty Name="codCategoria" ColumnName="codCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCategorias">
+      <EntityTypeMapping TypeName="GeoMediaBDModel.tblCategoria">
+        <MappingFragment StoreEntitySet="tblCategorias">
+          <ScalarProperty Name="codCategoria" ColumnName="codCategoria" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRegistroAlquilers">
+      <EntityTypeMapping TypeName="GeoMediaBDModel.tblRegistroAlquiler">
+        <MappingFragment StoreEntitySet="tblRegistroAlquiler">
+          <ScalarProperty Name="codAlquiler" ColumnName="codAlquiler" />
+          <ScalarProperty Name="fecha_alquiler" ColumnName="fecha_alquiler" />
+          <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+          <ScalarProperty Name="costoTotal" ColumnName="costoTotal" />
+          <ScalarProperty Name="idArchivo" ColumnName="idArchivo" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRoles">
+      <EntityTypeMapping TypeName="GeoMediaBDModel.tblRole">
+        <MappingFragment StoreEntitySet="tblRoles">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nomRol" ColumnName="nomRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTiposFiles">
+      <EntityTypeMapping TypeName="GeoMediaBDModel.tblTiposFile">
+        <MappingFragment StoreEntitySet="tblTiposFile">
+          <ScalarProperty Name="idTipoFile" ColumnName="idTipoFile" />
+          <ScalarProperty Name="nomTipoFile" ColumnName="nomTipoFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsuarios">
+      <EntityTypeMapping TypeName="GeoMediaBDModel.tblUsuario">
+        <MappingFragment StoreEntitySet="tblUsuarios">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nomUsuario" ColumnName="nomUsuario" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
