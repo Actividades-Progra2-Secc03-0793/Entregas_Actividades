@@ -53,9 +53,18 @@ namespace GeoMedia_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tblArchivos.Add(tblArchivo);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.tblArchivos.Add(tblArchivo);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    ViewBag.message = "Ya existe un Producto con ese ID. Por favor ingrece el Producto con otro ID";
+                    return RedirectToAction("Create");
+                }
+                
             }
 
             ViewBag.codCategoria = new SelectList(db.tblCategorias, "codCategoria", "categoria", tblArchivo.codCategoria);

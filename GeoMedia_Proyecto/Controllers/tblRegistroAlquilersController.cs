@@ -39,9 +39,18 @@ namespace GeoMedia_Proyecto.Controllers
         // GET: tblRegistroAlquilers/Create
         public ActionResult Create()
         {
-            ViewBag.idArchivo = new SelectList(db.tblArchivos, "idArchivo", "titulo");
-            ViewBag.idUsuario = new SelectList(db.tblUsuarios, "idUsuario", "nomUsuario");
-            return View();
+            
+            try
+            {
+                ViewBag.idArchivo = new SelectList(db.tblArchivos, "idArchivo", "titulo");
+                ViewBag.idUsuario = new SelectList(db.tblUsuarios, "idUsuario", "nomUsuario");
+                return View();
+            }
+            catch (Exception)
+            {
+                ViewBag.message = "Ya existe un Registro con ese ID. Por favor ingrece un Registro con otro ID";
+                return RedirectToAction("Create");
+            }
         }
 
         // POST: tblRegistroAlquilers/Create

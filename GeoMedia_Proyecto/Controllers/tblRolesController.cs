@@ -50,9 +50,19 @@ namespace GeoMedia_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tblRoles.Add(tblRole);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                try
+                {
+                    db.tblRoles.Add(tblRole);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+
+                    ViewBag.message = "Ya existe un Rol con ese ID. Por favor ingrece el Rol con otro ID";
+                    return RedirectToAction("Create");
+                }
             }
 
             return View(tblRole);

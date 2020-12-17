@@ -52,9 +52,18 @@ namespace GeoMedia_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tblUsuarios.Add(tblUsuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.tblUsuarios.Add(tblUsuario);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    ViewBag.message = "Ya existe un Usuario con ese ID. Por favor ingrece el Usuario con otro ID";
+                    return RedirectToAction("Create");
+                }
+                
             }
 
             ViewBag.idRol = new SelectList(db.tblRoles, "idRol", "nomRol", tblUsuario.idRol);
@@ -87,6 +96,10 @@ namespace GeoMedia_Proyecto.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(tblUsuario).State = EntityState.Modified;
+                if (Session["idRol"].Equals(2))
+                {
+                    tblUsuario.idRol = 2;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

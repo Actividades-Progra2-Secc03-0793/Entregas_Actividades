@@ -50,9 +50,18 @@ namespace GeoMedia_Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tblCategorias.Add(tblCategoria);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                try
+                {
+                    db.tblCategorias.Add(tblCategoria);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    ViewBag.message = "Ya existe una Categoría con ese ID. Por favor ingrece la Categoría con otro ID";
+                    return RedirectToAction("Create");
+                }
             }
 
             return View(tblCategoria);
