@@ -1,0 +1,238 @@
+﻿
+@{
+    ViewBag.Title = "Acerca de";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/index.css" rel="stylesheet" />
+    <style type="text/css">
+        .bg {
+            width: 100%;
+            background-image: url('../img/ocean.jpg');
+            background-size: 100% 100%;
+            overflow-y: hidden;
+            position: fixed;
+            z-index: -1;
+        }
+
+        .pagina-sitio {
+            width: 85%;
+            margin: auto;
+            margin-top: 100px;
+            background-color: white;
+        }
+
+            .pagina-sitio ul {
+                text-align: center;
+                display: inline-flex;
+                margin: 0.2em;
+                margin-left: 60px;
+            }
+
+                .pagina-sitio ul li a {
+                    font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+                    font-size: 10pt;
+                    text-align: center;
+                }
+
+        .Titulo-sitio h1 {
+            color: white;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            font-size: 55pt;
+            text-align: center;
+        }
+
+        .Titulo-sitio p {
+            color: white;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            font-size: 10pt;
+            text-align: center;
+            padding: 0.5em;
+        }
+
+        .content-block {
+            padding: 1em;
+        }
+
+        .datosDesarrollador {
+            padding-right: 20px;
+            padding-left: 20px;
+            float: left;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            font-size: 14pt;
+            vertical-align: central;
+        }
+
+        .fotoDesarrollador {
+            float: left;
+            padding: 5px;
+        }
+
+        .desarrolladores {
+            width: 100%;
+            padding-top: 25px;
+        }
+    </style>
+
+</head>
+<body>
+    <form id="form1">
+        <div>
+            <div class="bg">
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+            <div class="Titulo-sitio">
+                <h1 style="height: 90px;">Acerca de</h1>
+                <p>En esta página podras encontrar información sobre El sitio web de GeoMedia</p>
+            </div>
+            <div class="pagina-sitio">
+                <ul>
+                    <li><a href="#t1">Sitio</a>&nbsp;|&nbsp;</li>
+                    <li><a href="#t2">Desarroladores</a>&nbsp;|&nbsp;</li>
+                    <li><a href="#t3">¿Como contactarnos?</a>&nbsp;|&nbsp;</li>
+                </ul>
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="content-list">
+                    <div class="content-block">
+                        <a name="t1"><h1>El sitio web</h1></a>
+                        <p>
+                            GeoMedia, es un sitio web gratis,
+                            con la función de ofrecer una gran variedad multimedia donde los usuarios podrán buscar y alquilar las mejores series,
+                            películas, videos y música sin importar el momento y en cualquier lugar del planeta,
+                            para que disfruten de la mejor experiencia junto con la familia, amigos, colegas o pajera.
+                            Una experiencia inolvidable que GeoMedia tiene para ofreces.
+                            <br />
+                            <br />
+
+                            Los usuarios tendrán la posibilidad de tener acceso a diferentes medios como series,
+                            películas, videos y música de todos los géneros disponibles a la palma de su mano,
+                            solamente ingresando al sitio web, iniciando sesión desde la página principal y registrándose gratis.
+                            El sitio web Está diseñado para que los usuarios tengan la mejor experiencia para navegar y
+                            disfrutar de todos los servicios que GeoMedia tiene para dar.
+                            <br />
+                            <br />
+                            Con el propósito de vivir momentos especiales con sus seres queridos y a su vez poder disfrutar,
+                            recordar esos buenos momentos y con la posibilidad de descubrir nuevas series, películas, videos y música.
+                            Un lugar donde las personas puedan alejarse un poco del trabajo duro y
+                            puedan descansar disfrutando de los servicios que GeoMedia puede ofrecer.
+
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <a name="t2"><h1>Desarrolladores</h1></a>
+                        <div class="desarrolladores">
+                            <div class="fotoDesarrollador">
+                                <img src="~/img/Vane.jpeg" height="140" width="115" />
+                            </div>
+                            <div class="datosDesarrollador">
+                                Nombre: Evelyn Vanessa Rodríguez Ruano
+                                <br /><br />
+                                Edad: 19 años
+                                <br /><br />
+                                Estudios: Ingeniería en Sistemas y Computación
+                                <br />
+                            </div>
+                        </div>
+                        <div class="desarrolladores">
+                            <div class="fotoDesarrollador">
+                                <img src="~/img/dany.jpeg" height="140" width="115" />
+                            </div>
+                            <div class="datosDesarrollador">
+                                Nombre: Oscar Daniel mendez Landaverde
+                                <br /><br />
+                                Edad: 19 años
+                                <br /><br />
+                                Estudios: Ingeniería en Sistemas y Computación
+                                <br />
+                            </div>
+                        </div>
+                        <div class="desarrolladores">
+                            <div class="fotoDesarrollador">
+                                <img src="~/img/rous.jpeg" height="140" width="115" />
+                            </div>
+                            <div class="datosDesarrollador">
+                                Nombre: Rosemarie Aracely Vasquez Sanchez
+                                <br /><br />
+                                Edad: 21 años
+                                <br /><br />
+                                Estudios: Ingeniería en Sistemas y Computación
+                                <br />
+                            </div>
+                        </div>
+                        <div class="desarrolladores">
+                            <div class="fotoDesarrollador">
+                                <img src="~/img/ruben.jpeg" height="140" width="115" />
+                            </div>
+                            <div class="datosDesarrollador">
+                                Nombre: Rubén Ignacio Sandoval Perez
+                                <br /><br />
+                                Edad: 19 años
+                                <br /><br />
+                                Estudios: Ingeniería en Sistemas y Computación
+                                <br />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="content-block">
+                        <a name="t3"><h1>¿Como contactarnos?</h1></a>
+                        <p>
+                            GeoMedia se interesa mucho en atender de la mejor manera posible a sus usuarios.
+                            Por lo que si desea contactarnos puede seguir los siguientes pasos:<br /><br />
+
+                            1- Diríjase al menú superior<br />
+
+                            2- Presione clic sobre la opción de Contacto<br />
+
+                            3- Llene el formulario con los detalles que se le haya presentado<br />
+
+                            4- Presione enviar.<br /><br />
+
+                            Un encargado de nuestro equipo de desarrolladores se contactará
+                            con usted al correo que haya proporcionado para darle seguimiento a su situación.
+
+                        </p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pie">
+            <div class="texto-pie">
+                <h4>
+                    Derechos reservados
+                </h4>
+                <p>
+                    Por problemas que se puedan presentar durante su experiencia,
+                    por favor contactenos para solventar sus inquietudes lo más
+                    rapido posible. Por otra parte gracias por usar nuestro sitio.
+                </p>
+            </div>
+            <div class="redes">
+                <p>Puedes encontrarnos también en:</p>
+                <ul>
+                    <li><a href="#" class="f-logo"><img src="~/img/f-logo.png" alt="facebook-logo" /></a></li>
+                    <li><a href="#" class="w-logo"><img src="~/img/w-logo.png" alt="whatsapp-logo" /></a></li>
+                    <li><a href="#" class="t-logo"><img src="~/img/t-logo.png" alt="twitter-logo" /></a></li>
+                    <li><a href="#" class="i-logo"><img src="~/img/i-logo.png" alt="instagram-logo" /></a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </form>
+</body>
+</html>

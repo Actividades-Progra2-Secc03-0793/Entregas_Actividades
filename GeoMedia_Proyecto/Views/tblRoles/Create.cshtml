@@ -2,17 +2,45 @@
 
 @{
     ViewBag.Title = "Insertar";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
-<center>
+<div class="prt-body">
 <h2>@ViewBag.Title nuevo Rol</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+    try
+    {
+        @Html.AntiForgeryToken()
+    }
+    catch (Exception)
+    {
+
+        Response.Redirect("~/GeoHome/Index");
+    }
+
+    <div class="form-horizontal" style="padding-left: 2.5em;">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @{
+            if (!string.IsNullOrEmpty(ViewBag.message))
+            {
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+                    @ViewBag.message
+                </div>
+            }
+        }
         <div class="form-group">
             @Html.Label("ID")
             <div>
@@ -38,4 +66,4 @@
     </div>
 }
 
-</center>
+</div>

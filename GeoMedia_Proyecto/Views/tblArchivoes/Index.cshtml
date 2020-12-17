@@ -3,6 +3,17 @@
 @{
     ViewBag.Title = "Lista Productos";
     var total = 0;
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
 
 <div class="prt-header">

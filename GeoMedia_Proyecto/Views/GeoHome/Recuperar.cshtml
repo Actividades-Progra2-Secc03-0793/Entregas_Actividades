@@ -1,0 +1,137 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Recuperar su información</title>
+    <style type="text/css">
+        h1
+        {
+            color: darkblue;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+            text-align: center;
+        }
+        .frmRecuperar
+        {
+            width: 50%;
+            height: 600px;
+            margin-top: 80px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            border-radius: 15px;
+            border: 2px solid black;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.35);
+        }
+        .perfil
+        {
+            width: 100px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2.5em;
+        }
+        .perfil img
+        {
+            background-image:  radial-gradient(circle at top left, #fd00da, #19d7f8);
+            border-radius: 200px;
+            background-size: 100% 100%;
+        }
+        .alert {
+          font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
+          font-size: 14pt;
+          padding: 1em;
+          background-color: #f44336;
+          color: white;
+          border-radius: 15px;
+        }
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+        .textbox{
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS'; 
+            font-size: 12pt;
+            padding: 0.5em;
+            width: 75%;
+            text-align: center;
+        }
+        .boton-enviar{
+            background-color: #008903;
+            font-family:'Microsoft YaHei UI', 'Comic Sans MS'; 
+            font-size: 12pt;
+            margin: 0.5em;
+            padding: 0.5em;
+            border-radius: 5px;
+            color: white;
+        }
+        .boton-enviar:hover{
+            background-color: darkgreen;
+        }
+        .boton-regresar{
+            background-color: white;
+            font-family:'Microsoft YaHei UI', 'Comic Sans MS'; 
+            font-size: 12pt;
+            margin: 0.5em;
+            padding: 0.5em;
+            border-radius: 5px;
+            border: 1px solid black;
+
+        }
+        .boton-regresar:hover{
+            background-color: #808080;
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-color: #002a64;">
+    <div> 
+        <form class="frmRecuperar" method="post">
+            <center>
+                @{
+                    if (!string.IsNullOrEmpty(ViewBag.pass))
+                    {
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+                            Resultado: @ViewBag.pass
+                        </div>
+                    }
+                }
+                <h1>
+                    Recuperación de cuenta
+                </h1>
+                <hr />
+                <h2 style="color: red; font-family: 'Microsoft YaHei UI', 'Comic Sans MS';">Advertecia</h2>
+                <p style="font-family: 'Microsoft YaHei UI', 'Comic Sans MS';">Debe ser conciente que su informaciónn puede estar en juego, trate de que nadie este junto a usted para no poner su cuenta en peligro</p>
+                <hr />
+                <div class="perfil">
+                    <img src="~/img/user.png" alt="Perfil-user" />
+                </div>
+                <hr />
+                <div style="width: 100%;">
+                    <label style="font-family: 'Microsoft YaHei UI', 'Comic Sans MS'; font-size: 12pt;">Ingrece su ID de usuario</label><br />
+                    <input class="textbox" name="texto" value=" " /><br /><br />
+                    <input type="submit" name="btnRecuperar" value="Enviar" class="boton-enviar" />
+                    <input type="button" name="btnRegresar" value="Regresar" class="boton-regresar" onclick="document.location.href='@Url.Content("~/GeoHome/Login")'" />
+                </div>
+            </center>
+        </form>
+    </div>
+</body>
+</html>

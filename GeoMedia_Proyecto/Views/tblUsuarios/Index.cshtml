@@ -3,7 +3,20 @@
 @{
     ViewBag.Title = "Lista Usuarios";
     var total = 0;
+
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
+
 <div class="prt-header">
     <img src="~/img/geom-logo.png" alt="geo-media" />
 </div> 
@@ -37,9 +50,14 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Telefono)
                 </th>
-                <th>
-                    Rol
-                </th>
+                @{
+                    if (Session["idRol"].Equals(1))
+                    {
+                        <th>
+                            Rol
+                        </th>
+                    }
+                }
                 <th  class="prt-hidden">Opciones</th>
             </tr>
 
@@ -65,9 +83,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Telefono)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.tblRole.nomRol)
-                    </td>
+                    @{
+                        if (Session["idRol"].Equals(1))
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblRole.nomRol)
+                            </td>
+                        }
+                    }
+                    
                     <td  class="prt-hidden">
                         <input type="button" value="Editar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/tblUsuarios/Edit/"+item.idUsuario)'" />
                         <input type="button" value="Ver" class="btn btn-info" onclick="document.location.href='@Url.Content("~/tblUsuarios/Details/"+item.idUsuario)'" />

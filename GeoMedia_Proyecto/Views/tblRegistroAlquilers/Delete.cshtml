@@ -2,6 +2,17 @@
 
 @{
     ViewBag.Title = "Delete";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
 
 <h2>Delete</h2>
@@ -53,8 +64,17 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        try
+        {
+            @Html.AntiForgeryToken()
+        }
+        catch (Exception)
+        {
+
+            Response.Redirect("~/GeoHome/Index");
+        }
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |

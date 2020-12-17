@@ -3,7 +3,18 @@
 @{
     ViewBag.Title = "Roles";
     var total = 0;
-} 
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
+}
 <div class="prt-body">
     <center>
         <h2>Lista de @ViewBag.Title</h2>

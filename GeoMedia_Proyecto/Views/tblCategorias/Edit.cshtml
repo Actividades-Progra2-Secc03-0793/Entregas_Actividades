@@ -2,16 +2,35 @@
 
 @{
     ViewBag.Title = "Editar";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
 
-<center>
+<div class="prt-body">
     <h2>@ViewBag.Title categoria</h2>
 
     @using (Html.BeginForm())
     {
-        @Html.AntiForgeryToken()
+        try
+        {
+            @Html.AntiForgeryToken()
+        }
+        catch (Exception)
+        {
 
-        <div class="form-horizontal">
+            Response.Redirect("~/GeoHome/Index");
+        }
+
+        <div class="form-horizontal" style="padding-left: 2.5em;">
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.codCategoria)
@@ -33,4 +52,4 @@
         </div>
     }
 
-</center>
+</div>

@@ -1,7 +1,18 @@
 ﻿@model GeoMedia_Proyecto.Models.tblRole
 
-@{
+@{ 
     ViewBag.Title = "Detailles";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
 <div style="width: 98%; margin: auto">
     <h2>Detalles del Rol</h2>

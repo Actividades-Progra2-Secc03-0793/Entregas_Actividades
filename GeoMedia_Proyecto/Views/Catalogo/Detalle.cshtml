@@ -1,0 +1,88 @@
+﻿@model GeoMedia_Proyecto.Models.tblArchivo
+@{
+    ViewBag.Title = Model.titulo;
+    var compras = Session["carrito"];
+}
+
+<div style="width: 100%; background-image: url(../../img/background.png); background-size: 100% 100%; margin-top: 0px;">
+    <div style=" margin-top: 25px; width: 95%; margin-left: auto; margin-right: auto; background-color: white; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.50) 2px 2px 2px 2px; padding: 0.5em">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationMessage("error", new { @class = "text-danger" })
+
+            <h1>@ViewBag.Title</h1>
+
+            @Html.HiddenFor(data => data.idArchivo);
+            <table>
+                <tr>
+                    <td align="center" width="5%" rowspan="2">
+                        @if (Model.ruta == null)
+                        {
+                            <img src="../../img/Extras.png" alt="Imagen-Producto" width="350" height="500" style="background-color: #525252"/>
+                        }
+                        else
+                        {
+                            <img src="@Html.DisplayFor(model => model.ruta)" alt="Imagen-Producto" width="350" height="500" />
+                        }
+                    </td>
+                    <td width="85%" colspan="2">
+                        <div style="font-size: 14pt; text-align: justify; border-bottom: solid 2px black; margin: 0.5em;">
+                            <h2>Sinopsis</h2>
+                            <p style="font-size: 12pt;">
+                                @Html.DisplayFor(data => data.sinopsis)
+                            </p>   
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="font-size: 12pt; text-align: justify; margin: 0.5em;">
+                            <p>
+                                <b>Detalles:</b><br />@Html.DisplayFor(data => data.detalles)
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size: 12pt; text-align: justify; margin: 0.5em;">
+                            <h3>Información general</h3>
+                            <p>
+                                <b>Precio: </b>$@Html.DisplayFor(data => data.precio) <br/>
+                                <b>Formato: </b> @Html.DisplayFor(data => data.formato) <br />
+                                <b>Tipo de archvo: </b> @Html.DisplayFor(data => data.tblTiposFile.nomTipoFile) <br />
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <br />
+                <center>
+                    @if (compras != null)
+                    {
+                        int CountCar = 0;
+                        foreach (var compra in Session["carrito"] as List<GeoMedia_Proyecto.Models.DataViewModels.CarritoItem>)
+                        {
+                            if (compras != null && (compra.TblArchivos.idArchivo == Model.idArchivo))
+                            {
+                                CountCar++;
+                            }
+                        }
+                        if (CountCar > 0)
+                        {
+                            <input type="button" class="btn btn-danger" name="car" value="Quitar" onclick="document.location.href='@Url.Content("~/Carrito/MiCarrito/")'" />
+                        }
+                        else
+                        {
+                            <input type="button" class="btn btn-success" name="car" value="Al carrito" onclick="document.location.href='@Url.Content("~/Carrito/AddCarrito/" + Model.idArchivo)'" />
+                        }
+                    }
+                    <input type="button" value="Regresar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/Catalogo/Peliculas")'" />
+                </center>
+            </div>
+        }
+    </div>
+    <br /><br /><br /><br /><br /><br />
+</div>
+

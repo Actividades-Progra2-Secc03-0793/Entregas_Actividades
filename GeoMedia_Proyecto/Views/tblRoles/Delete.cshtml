@@ -2,6 +2,17 @@
 
 @{
     ViewBag.Title = "Borrar";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
 
 <div style="width: 98%; margin: auto">
@@ -23,7 +34,15 @@
 
         @using (Html.BeginForm())
         {
-            @Html.AntiForgeryToken()
+            try
+            {
+                @Html.AntiForgeryToken()
+            }
+            catch (Exception)
+            {
+
+                Response.Redirect("~/GeoHome/Index");
+            }
 
             <div class="form-actions no-color">
                 <input type="submit" value="Borrar" class="btn btn-danger" /> |

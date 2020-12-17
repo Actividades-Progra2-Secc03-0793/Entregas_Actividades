@@ -1,0 +1,26 @@
+﻿
+@{
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        Layout = null;
+        Response.Redirect("~/Carrito/MiCarrito");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddCarrito</title>
+</head>
+<body>
+    <div> 
+       
+    </div>
+</body>
+</html>

@@ -1,6 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    if (Session["nomUsuario"] == null)
+    {
+        ViewBag.Title = "Página Principal";
+    }
+    else
+    {
+        ViewBag.Title = Session["nomUsuario"].ToString();
+    }
 }
 
 <!DOCTYPE html>

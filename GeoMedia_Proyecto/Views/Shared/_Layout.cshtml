@@ -1,8 +1,4 @@
-﻿@{ 
-    var session = 1;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,6 +8,58 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/index.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .perfil
+        {
+            top: 0.5em;
+            right: 0.1em;
+            margin-right: 15.5em;
+            position: absolute;
+            text-decoration: none;
+            color: white;
+            border: 2px solid transparent;
+            background-color: #1b1b1b;
+            border-radius: 10px;
+            z-index: 1;
+            transition: all .3s ease;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -o-transition: all .3s ease;
+        }
+        .perfil span
+        {
+            display: block;
+            padding: 8px 22px;
+        }
+        .perfil:hover, .perfil span:hover
+        {
+            color: white;
+            text-decoration: unset;
+            border: 1px solid #00ff90;
+        }
+        .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+
 </head>
 <body style="background-color: white;">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,56 +73,59 @@
                 <div style="margin: 0.25em;"><a href="~/GeoHome/Index"><img src="~/img/geom-logo.png" alt="Logo.png" /></a></div> 
                 
             </div>
-            @if (session == 1)
-            {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "GeoHome")</li>
+                        @{
+                            var rol = Session["idRol"];
+                            int idUsuario = Convert.ToInt32(Session["idUsuario"]);
+
+                            if (rol != null && rol.Equals(1))
+                            {
+                                <li>@Html.ActionLink("Usuarios", "Index", "tblUsuarios")</li>
+                                <li>@Html.ActionLink("Roles", "Index", "tblRoles")</li>
+                                <li>@Html.ActionLink("Productos", "Index", "tblArchivoes")</li>
+                                <li>@Html.ActionLink("Categorias", "Index", "tblCategorias")</li>
+                                <li>@Html.ActionLink("Alquileres realizados", "Index", "tblRegistroAlquilers")</li>
+                            }
+                            else if (rol != null && rol.Equals(2))
+                            {
+                                if (Session["totalcarrito"] == null)
+                                {
+                                    <li>@Html.ActionLink("Ver carrito (" + 0 + ")", "MiCarrito", "Carrito")</li>
+                                }
+                                else
+                                {
+                                    var total = Session["totalcarrito"];
+                                    <li>@Html.ActionLink("Ver carrito (" + total + ")", "MiCarrito", "Carrito")</li>
+                                }
+                                <li>@Html.ActionLink("Historial de alquileres", "MiHistorial", "Carrito", new { id = idUsuario }, null)</li>
+                            }
+                        }
+                        
                         <li>@Html.ActionLink("Acerca de", "About", "GeoHome")</li>
                         <li>@Html.ActionLink("Contacto", "Contact", "GeoHome")</li>
                         <li>@Html.ActionLink("Ayuda", "Help", "GeoHome")</li>
-                        <li>@Html.ActionLink("Usuarios", "Index", "tblUsuarios")</li>
-                        <li>@Html.ActionLink("Roles", "Index", "tblRoles")</li>
-                        <li>@Html.ActionLink("Productos", "Index", "tblArchivoes")</li>
-                        <li>@Html.ActionLink("Categorias", "Index", "tblCategorias")</li>
-                        <li>@Html.ActionLink("Alquileres realizados", "Index", "tblRegistroAlquilers")</li>
+                        
                     </ul>
                 </div>
                 <div>
-                    <a href="~/GeoHome/CerrarLogin" class="btn_registro"><span>Cerrar sesión</span></a>
+                    @{
+                        var session = Session["sesion"];
+                        var usuario = Session["nomUsuario"];
+                        int? id = Convert.ToInt32(Session["idUsuario"]);
+                        if (session != null && usuario != null)
+                        {
+                            <a href="~/tblUsuarios/Details/@id" class="perfil"><span>@usuario</span></a>
+                            <a href="~/GeoHome/Logout" class="btn_registro"><span>Cerrar Session</span></a>
+                        }
+                        else
+                        {
+                            <a href="~/GeoHome/Login" class="btn_registro"><span>Inciar sesión</span></a>
+                        }
+                    }
+                    
 
                 </div>
-            }
-            else if (session == 2)
-            {
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "GeoHome")</li>
-                        <li>@Html.ActionLink("Acerca de", "About", "GeoHome")</li>
-                        <li>@Html.ActionLink("Contacto", "Contact", "GeoHome")</li>
-                        <li>@Html.ActionLink("Ayuda", "Help", "GeoHome")</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="~/GeoHome/CerrarLogin" class="btn_registro"><span>Cerrar sesión</span></a>
-
-                </div>
-            }
-            else
-            {
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "GeoHome")</li>
-                        <li>@Html.ActionLink("Acerca de", "About", "GeoHome")</li>
-                        <li>@Html.ActionLink("Contacto", "Contact", "GeoHome")</li>
-                        <li>@Html.ActionLink("Ayuda", "Help", "GeoHome")</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="~/GeoHome/Login" class="btn_registro"><span>Iniciar sesión</span></a>
-
-                </div>
-            }
         </div>
     </div>
     <div>

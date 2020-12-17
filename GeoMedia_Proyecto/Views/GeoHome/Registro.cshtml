@@ -1,4 +1,4 @@
-﻿
+﻿@model GeoMedia_Proyecto.Models.tblUsuario
 @{
     Layout = null;
 }
@@ -29,7 +29,7 @@
         .frmRegistro
         {
             width: 85%;
-            height: 500px;
+            height: 600px;
             margin-top: 80px;
             margin-left: auto;
             margin-right: auto;
@@ -46,7 +46,7 @@
         {
             background-size: 100% 100%;
             width: 100%;
-            height: 500px;
+            height: 600px;
         }
         .perfil
         {
@@ -144,8 +144,8 @@
     </style>
 </head>
 <body>
-    <form class="frmRegistro" runat="server">
-        <div>
+
+        <div class="frmRegistro">
             <div class="banner-login">
                 <img src="~/img/vide.jpg" alt="Banner-login" />
             </div>
@@ -154,43 +154,76 @@
                     <img src="~/img/user.png" alt="Perfil-user" />
                 </div>
                 <h1>REGISTRO USUARIO</h1>
-                <table width="55%" class="login" border="0">
-                    <tr>
-                        <td class="auto-style1" style="width: 25%">
-                            <label for="txtMail">Correo: </label>
-                        </td>
-                        <td><input type="text" name="txtMail" value=" " style="width: 100%" /></td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1" style="width: 25%">
-                            <label for="txtUser">Usuario: </label>
-                        </td>
-                        <td><input type="text" name="txtUser" value=" " style="width: 100%" /></td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1" style="width: 25%">
-                            <label for="txtPass">Contraseña: </label>
-                        </td>
-                        <td><input type="password" name="txtPass1" value=" " style="width: 100%" /></td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1" style="width: 25%" colspan="2" align="middle">
-                            <input type="submit" name="btnAcceder" value="Registrarse" class="acceder" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1" style="width: 25%" colspan="2" align="middle">
-                            <a href="~/GeoHome/Registro" style="background-color:#171717; text-decoration: none; color: white; font-size: 16pt; border: solid 2px #310079; cursor: pointer;">Restablecer</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1" style="width: 25%" colspan="2" align="middle">
-                            <a href="~/GeoHome/Login" style="background-color:#171717; text-decoration: none; color: white; font-size: 16pt; border: solid 2px #310079; cursor: pointer;">Regresar</a>
-                        </td>
-                    </tr>
-                </table>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <table width="55%" class="login" border="0">
+                        <tr>
+                            <td class="auto-style1" style="width: 25%">
+                                <label for="txtNombre">Nombre: </label>
+
+                            </td>
+
+                            <td>@Html.EditorFor(model => model.Nombre)</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="auto-style1" style="width: 25%">
+                                <label for="txtApellido">Apellido: </label>
+                            </td>
+                            <td>@Html.EditorFor(model => model.Apellido)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="auto-style1" style="width: 25%">
+                                <label for="txtTelefono">Telefono: </label>
+                            </td>
+                            <td>@Html.EditorFor(model => model.Telefono)</td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td class="auto-style1" style="width: 25%">
+                                <label for="txtMail">Correo: </label>
+                            </td>
+                            <td>@Html.EditorFor(model => model.Correo)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="auto-style1" style="width: 25%">
+                                <label for="txtUser">Usuario: </label>
+                            </td>
+                            <td>@Html.EditorFor(model => model.nomUsuario)</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1" style="width: 25%">
+                                <label for="txtPass">Contraseña: </label>
+                            </td>
+                            <td>@Html.PasswordFor(model => model.pass)</td>
+
+                        </tr>
+                        <tr>
+                            <td class="auto-style1" style="width: 25%" colspan="2" align="middle">
+                                <input type="submit" name="btnAcceder" value="Registrarse" class="acceder" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1" style="width: 25%; margin-bottom: 0.5em" colspan="2" align="middle">
+                                <a href="~/GeoHome/Registro" style="background-color:#171717; text-decoration: none; color: white; font-size: 16pt; border: solid 2px #310079; cursor: pointer; padding-left: 1.80em; padding-right: 1.80em; ">Restablecer</a><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1" style="width: 25%" colspan="2" align="middle">
+                                <a href="~/GeoHome/Login" style="background-color:#171717; text-decoration: none; color: white; font-size: 16pt; border: solid 2px #310079; cursor: pointer; padding-left: 2.35em; padding-right: 2.35em;">Regresar</a>
+                            </td>
+                        </tr>
+                    </table>
+                }
             </div>
         </div>
-    </form>
 </body>
 </html>

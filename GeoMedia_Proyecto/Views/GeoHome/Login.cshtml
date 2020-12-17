@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+
 }
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@
         .frmLogin
         {
             width: 85%;
-            height: 500px;
+            height: 600px;
             margin-top: 80px;
             margin-left: auto;
             margin-right: auto;
@@ -38,13 +39,14 @@
         {
             float: left;
             width: 35%;
+            height: 600px;
             border-right: 2px solid #00ff82;
         }
         .banner-login img
         {
             background-size: 100% 100%;
             width: 100%;
-            height: 500px;
+            height: 600px;
         }
         .perfil
         {
@@ -103,7 +105,7 @@
             text-align: center;
             text-decoration: none;
             color: white;
-            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';;
+            font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
             font-size: 10pt;
             padding-bottom: 1em;
         }
@@ -122,6 +124,26 @@
         {
             font-family: 'Microsoft YaHei UI', 'Comic Sans MS';
             color: white;
+        }
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+        }
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
         }
         /*
         media (max-width: 900px)
@@ -161,7 +183,7 @@
     </style>
 </head>
 <body>
-    <form class="frmLogin">
+    <form method="post" class="frmLogin">
         <div>
             <div class="banner-login">
                 <img src="~/img/musi.jpg" alt="Banner-login" />
@@ -184,6 +206,19 @@
                             <input type="password" name="txtPass" value="" placeholder="ingrece su contraseña" />
                         </td>
                     </tr>
+                    @{ 
+                        if (!string.IsNullOrEmpty(ViewBag.message))
+                        {
+                            <tr>
+                                <td>
+                                    <div class="alert">
+                                        <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+                                        @ViewBag.message
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
                     <tr>
                         <td class="auto-style1" style="width: 25%" align="middle" height="75">
                             <input type="submit" name="btnAcceder" value="Ingresar" class="acceder" /><br />
@@ -192,7 +227,7 @@
                     </tr>
                 </table>
                 <div class="pie-login">
-                    <a href="#">¿Has olvidado tú usuario o contraseña?</a><br />
+                    <a href="~/GeoHome/Recuperar">¿Has olvidado tú usuario o contraseña?</a><br />
                     <a href="~/GeoHome/Registro">Crear un nuevo usuario</a>
                 </div>
             </div>

@@ -2,14 +2,33 @@
 
 @{
     ViewBag.Title = "Edit";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+    else
+    {
+        if (Session["idRol"].Equals(2))
+        {
+            Response.Redirect("~/GeoHome/Index");
+        }
+    }
 }
 
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
+    try
+    {
+        @Html.AntiForgeryToken()
+    }
+    catch (Exception)
+    {
+
+        Response.Redirect("~/GeoHome/Index");
+    }
+
     <div class="form-horizontal">
         <h4>tblRegistroAlquiler</h4>
         <hr />
