@@ -1,0 +1,44 @@
+﻿@model List<GeoMedia_Proyecto.Models.DataViewModels.ViewRegistro>
+@{
+    ViewBag.Title = "Mi Historial";
+    if (Session["sesion"] == null)
+    {
+        Response.Redirect("~/GeoHome/Index");
+    }
+}
+
+
+<div class="prt-body">
+    <center>
+        <h2>Mi Historial de alquileres</h2>
+    </center>
+    <div class="prt-header">
+        <img src="~/img/geom-logo.png" alt="geo-media" />
+    </div> 
+    <div class="prt-hidden">
+        @Html.ActionLink("Regresar", "Index", "GeoHome", null, htmlAttributes: new { @class = "btn btn-default" })
+        <input type="button" value="Generar Reporte" class="btn btn-primary prt-hidden" onclick="window.print()" />
+    </div>  
+    <table class="table table-hover">
+        <tr>
+            <th>Mi Usuario</th>
+            <th>Titulos</th>
+            <th>Fecha de alquiler</th>
+            <th>SubTotal</th>
+            <th>Total</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.tblUsuario</td>
+                <td>@item.tblArchivo</td>
+                <td>@item.fec_alquiler</td>
+                <td>$@item.subtotal</td>
+                <td>$@item.costoTotal</td>
+            </tr>
+        }
+    </table>
+</div> 
+
+
+
